@@ -1,12 +1,10 @@
 // Add imports above this line
 import { galleryItems } from './gallery-items';
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
 // Change code below this line
 
 console.log(galleryItems);
-
-
-import SimpleLightbox from "simplelightbox";
-import "simplelightbox/dist/simple-lightbox.min.css";
 
 const galleryList = document.querySelector(".gallery");
 
@@ -35,7 +33,7 @@ galleryList.addEventListener("click", (evt) => {
   const clickedImage = evt.target.closest(".gallery__image");
   if (!clickedImage) return;
 
-  const instance = basicLightbox.create(
+  const instance = SimpleLightbox.open(
     `<img src="${clickedImage.dataset.source}">`,
     {
       onShow: (instance) => {
@@ -54,4 +52,9 @@ galleryList.addEventListener("click", (evt) => {
   }
 
   instance.show();
+});
+
+const lightbox = new SimpleLightbox('.gallery a', {
+  captionsData: 'alt',
+  captionDelay: 250,
 });
