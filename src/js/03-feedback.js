@@ -35,6 +35,8 @@ function handlerSubmit(evt) {
     const dataToConsole = JSON.parse(localStorage.getItem(keyStorage));
     console.log(dataToConsole);
 
+    localStorage.removeItem(keyStorage);
+
     feedbackForm.reset();
   }
 }
